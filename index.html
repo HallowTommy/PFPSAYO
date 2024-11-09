@@ -175,16 +175,7 @@
             clothes: 1
         };
         const imageCache = {};
-        const baseImageSrc = 'images/base/base.png'; // Путь к базовому изображению
-
-        async function preloadImages() {
-            for (const layer of layers) {
-                const maxPresets = 5; // Максимальное количество пресетов для каждого слоя
-                for (let i = 1; i <= maxPresets; i++) {
-                    await loadImage(layer, i);
-                }
-            }
-        }
+        const baseImageSrc = 'images/base/base.png';
 
         async function loadImage(part, value) {
             const src = part === 'base' ? baseImageSrc : `images/${part}/${value}.png`;
@@ -204,12 +195,12 @@
             });
         }
 
-        async function drawAvatar(ctx = canvas.getContext('2d'), width = 400, height = 400) {
-            ctx.clearRect(0, 0, width, height);
+        async function drawAvatar() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
             for (const layer of layers) {
                 try {
-                    const img = await loadImage(layer, presets[layer] || 1);
-                    ctx.drawImage(img, 0, 0, width, height);
+                    const img = await loadImage(layer, presets[layer]);
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
                 } catch (error) {
                     console.error(`Ошибка при отрисовке слоя ${layer}:`, error);
                 }
@@ -219,7 +210,7 @@
         function changePreset(part, delta) {
             presets[part] = Math.max(1, (presets[part] || 1) + delta);
             document.getElementById(`${part}Preset`).textContent = presets[part];
-            requestAnimationFrame(() => drawAvatar());
+            drawAvatar();
         }
 
         function randomizeAvatar() {
@@ -227,7 +218,7 @@
                 presets[part] = Math.floor(Math.random() * 5) + 1;
                 document.getElementById(`${part}Preset`).textContent = presets[part];
             }
-            requestAnimationFrame(() => drawAvatar());
+            drawAvatar();
         }
 
         async function downloadAvatar() {
@@ -245,13 +236,13 @@
         }
 
         window.onload = async () => {
-            await preloadImages();
             for (const part in presets) {
                 document.getElementById(`${part}Preset`).textContent = presets[part];
             }
-            drawAvatar(); // Отображение пресетов по умолчанию N1 при загрузке
+            await drawAvatar(); // Отрисовка по умолчанию сразу после загрузки
         };
     </script>
 </body>
 </html>
+
 
