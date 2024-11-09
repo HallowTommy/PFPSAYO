@@ -167,7 +167,7 @@
         const canvas = document.getElementById('avatarCanvas');
         const ctx = canvas.getContext('2d');
         const layers = ['background', 'base', 'hat', 'eyebrows', 'mustache', 'clothes'];
-        const presets = JSON.parse(localStorage.getItem('presets')) || {
+        const presets = {
             background: 1,
             hat: 1,
             eyebrows: 1,
@@ -219,7 +219,6 @@
         function changePreset(part, delta) {
             presets[part] = Math.max(1, (presets[part] || 1) + delta);
             document.getElementById(`${part}Preset`).textContent = presets[part];
-            localStorage.setItem('presets', JSON.stringify(presets)); // Сохранение в localStorage
             requestAnimationFrame(() => drawAvatar());
         }
 
@@ -228,7 +227,6 @@
                 presets[part] = Math.floor(Math.random() * 5) + 1;
                 document.getElementById(`${part}Preset`).textContent = presets[part];
             }
-            localStorage.setItem('presets', JSON.stringify(presets)); // Сохранение в localStorage
             requestAnimationFrame(() => drawAvatar());
         }
 
@@ -251,8 +249,9 @@
             for (const part in presets) {
                 document.getElementById(`${part}Preset`).textContent = presets[part];
             }
-            drawAvatar();
+            drawAvatar(); // Отображение пресетов по умолчанию N1 при загрузке
         };
     </script>
 </body>
 </html>
+
