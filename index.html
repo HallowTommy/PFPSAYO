@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dress up SAYO - PFP Builder</title>
+    <style>
+        /* Основные стили */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-top: -150px;
+            margin-bottom: 100px;
+            text-transform: uppercase;
+        }
+
+        .builder-container {
+            display: flex;
+            gap: 40px;
+            max-width: 1200px;
+            width: 100%;
+            justify-content: center;
+            align-items: stretch;
+            margin-top: -20px;
+        }
+
+        .controls {
+            width: 260px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .control-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .control-item span {
+            font-weight: bold;
+        }
+
+        .control-buttons {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .control-buttons button {
+            padding: 5px 10px;
+            font-size: 14px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            background-color: #ffffff;
+        }
+
+        .control-buttons .preset-value {
+            width: 30px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .control-actions {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .download-button {
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .download-button:hover {
+            background-color: #0056b3;
+        }
+
+        .avatar-preview-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .avatar-preview {
+            background-color: #f0f0f0;
+            border-radius: 16px;
+            border: 2px solid #333;
+            width: 400px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <h1>DRESS UP SAYO</h1>
+    <div class="builder-container">
+        <div class="controls">
+            <!-- Панель управления для каждого слоя -->
+            <div class="control-item">
+                <span>BACKGROUND</span>
+                <div class="control-buttons">
+                    <button onclick="changePreset('background', -1)">&larr;</button>
+                    <span id="backgroundPreset" class="preset-value">1</span>
+                    <button onclick="changePreset('background', 1)">&rarr;</button>
+                </div>
+            </div>
+            <div class="control-item">
+                <span>HAT</span>
+                <div class="control-buttons">
+                    <button onclick="changePreset('hat', -1)">&larr;</button>
+                    <span id="hatPreset" class="preset-value">1</span>
+                    <button onclick="changePreset('hat', 1)">&rarr;</button>
+                </div>
+            </div>
+            <div class="control-item">
+                <span>EYEBROWS</span>
+                <div class="control-buttons">
+                    <button onclick="changePreset('eyebrows', -1)">&larr;</button>
+                    <span id="eyebrowsPreset" class="preset-value">1</span>
+                    <button onclick="changePreset('eyebrows', 1)">&rarr;</button>
+                </div>
+            </div>
+            <div class="control-item">
+                <span>MUSTACHE</span>
+                <div class="control-buttons">
+                    <button onclick="changePreset('mustache', -1)">&larr;</button>
+                    <span id="mustachePreset" class="preset-value">1</span>
+                    <button onclick="changePreset('mustache', 1)">&rarr;</button>
+                </div>
+            </div>
+            <div class="control-item">
+                <span>CLOTHES</span>
+                <div class="control-buttons">
+                    <button onclick="changePreset('clothes', -1)">&larr;</button>
+                    <span id="clothesPreset" class="preset-value">1</span>
+                    <button onclick="changePreset('clothes', 1)">&rarr;</button>
+                </div>
+            </div>
+            <div class="control-actions">
+                <button class="download-button" onclick="randomizeAvatar()">RANDOM</button>
+                <button class="download-button" onclick="downloadAvatar()">DOWNLOAD</button>
+            </div>
+        </div>
+        <div class="avatar-preview-container">
+            <canvas id="avatarCanvas" class="avatar-preview" width="400" height="400"></canvas>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('avatarCanvas');
+        const ctx = canvas.getContext('2d');
+        const imageCache = {};
+        const baseImageSrc = 'images/base/base.png'; // Путь к базовому изображению
+        let baseImage;
+
+        const presets = {
+            background: 1,
+            hat: 1,
+            eyebrows: 1,
+            mustache: 1,
+            clothes: 1
+        };
+
+        async function loadBaseImage() {
+            const img = new Image();
+            img.crossOrigin = "anonymous";
+            img.src = baseImageSrc;
+            await img.decode();
+            baseImage = img;
+            console.log("Базовое изображение загружено.");
+        }
+
+        async function loadImage(part, value) {
+            const src = `images/${part}/${value}.png`;
+            return new Promise((resolve, reject) => {
+                if (imageCache[src]) {
+                    resolve(imageCache[src]);
+                } else {
+                    const img = new Image();
+                    img.crossOrigin = "anonymous";
+                    img.src = src;
+                    img.onload = () => {
+                        imageCache[src] = img;
+                        console.log(`Изображение загружено для ${part}`);
+                        resolve(img);
+                    };
+                    img.onerror = () => {
+                        console.error(`Не удалось загрузить изображение для ${part}: ${src}`);
+                        reject(new Error(`Не удалось загрузить изображение для ${part}: ${src}`));
+                    };
+                }
+            });
+        }
+
+        async function drawAvatar(ctx = canvas.getContext('2d'), width = 400, height = 400) {
+            ctx.clearRect(0, 0, width, height);
+            const layers = ['background', 'base', 'hat', 'eyebrows', 'mustache', 'clothes'];
+            for (let layer of layers) {
+                try {
+                    let img = layer === 'base' ? baseImage : await loadImage(layer, presets[layer]);
+                    ctx.drawImage(img, 0, 0, width, height);
+                } catch (error) {
+                    console.error(`Ошибка при отрисовке слоя ${layer}:`, error);
+                }
+            }
+            console.log("Аватар отрисован.");
+        }
+
+        function changePreset(part, delta) {
+            presets[part] = Math.max(1, presets[part] + delta);
+            document.getElementById(`${part}Preset`).textContent = presets[part];
+            drawAvatar();
+        }
+
+        function randomizeAvatar() {
+            Object.keys(presets).forEach(part => {
+                presets[part] = getRandomPresetValue();
+                document.getElementById(`${part}Preset`).textContent = presets[part];
+            });
+            drawAvatar();
+        }
+
+        function getRandomPresetValue() {
+            return Math.floor(Math.random() * 5) + 1;
+        }
+
+        async function downloadAvatar() {
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = 1200;
+            tempCanvas.height = 1200;
+            const tempCtx = tempCanvas.getContext('2d');
+            await drawAvatar(tempCtx, 1200, 1200);
+
+            tempCanvas.toBlob(blob => {
+                if (blob) {
+                    const link = document.createElement('a');
+                    link.download = 'avatar.png';
+                    link.href = URL.createObjectURL(blob);
+                    link.click();
+                    URL.revokeObjectURL(link.href);
+                } else {
+                    console.error("Ошибка при создании изображения для скачивания.");
+                }
+            }, 'image/png');
+        }
+
+        window.onload = async () => {
+            await loadBaseImage();
+            drawAvatar();
+        };
+    </script>
+</body>
+</html>
