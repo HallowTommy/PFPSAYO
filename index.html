@@ -238,7 +238,17 @@
             const tempCanvas = document.createElement('canvas');
             tempCanvas.width = 1200;
             tempCanvas.height = 1200;
-            await drawAvatar(tempCanvas.getContext('2d'), 1200, 1200);
+            const tempCtx = tempCanvas.getContext('2d');
+            
+            for (const layer of layers) {
+                try {
+                    const img = await loadImage(layer, presets[layer]);
+                    tempCtx.drawImage(img, 0, 0, tempCanvas.width, tempCanvas.height);
+                } catch (error) {
+                    console.error(`Ошибка при отрисовке слоя ${layer}:`, error);
+                }
+            }
+
             tempCanvas.toBlob(blob => {
                 const link = document.createElement('a');
                 link.download = '$SAYO.png';
