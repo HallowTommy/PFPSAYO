@@ -168,10 +168,9 @@
         const ctx = canvas.getContext('2d');
         const layers = ['background', 'base', 'hat', 'eyebrows', 'mustache', 'clothes'];
         
-        // Объект для хранения количества доступных изображений в каждом пресете
         const presetLimits = {
-            background: 2,
-            hat: 2,
+            background: 1,
+            hat: 1,
             eyebrows: 1,
             mustache: 1,
             clothes: 1
@@ -242,7 +241,7 @@
             await drawAvatar(tempCanvas.getContext('2d'), 1200, 1200);
             tempCanvas.toBlob(blob => {
                 const link = document.createElement('a');
-                link.download = 'avatar.png';
+                link.download = '$SAYO.png';
                 link.href = URL.createObjectURL(blob);
                 link.click();
                 URL.revokeObjectURL(link.href);
