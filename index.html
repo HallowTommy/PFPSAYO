@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dress up SAYO - PFP Builder</title>
     <style>
-        /* Основные стили */
         body {
             font-family: Arial, sans-serif;
             display: flex;
@@ -18,14 +17,12 @@
             padding: 20px;
             overflow: hidden;
         }
-
         h1 {
             font-size: 24px;
             margin-top: -150px;
             margin-bottom: 100px;
             text-transform: uppercase;
         }
-
         .builder-container {
             display: flex;
             gap: 40px;
@@ -35,7 +32,6 @@
             align-items: stretch;
             margin-top: -20px;
         }
-
         .controls {
             width: 260px;
             background-color: #ffffff;
@@ -48,24 +44,20 @@
             justify-content: space-between;
             align-items: center;
         }
-
         .control-item {
             display: flex;
             align-items: center;
             justify-content: space-between;
             width: 100%;
         }
-
         .control-item span {
             font-weight: bold;
         }
-
         .control-buttons {
             display: flex;
             align-items: center;
             gap: 10px;
         }
-
         .control-buttons button {
             padding: 5px 10px;
             font-size: 14px;
@@ -73,13 +65,11 @@
             border: 1px solid #ccc;
             background-color: #ffffff;
         }
-
         .control-buttons .preset-value {
             width: 30px;
             text-align: center;
             font-weight: bold;
         }
-
         .control-actions {
             margin-top: 30px;
             display: flex;
@@ -87,7 +77,6 @@
             gap: 10px;
             width: 100%;
         }
-
         .download-button {
             padding: 12px;
             background-color: #007bff;
@@ -98,11 +87,9 @@
             font-size: 16px;
             text-align: center;
         }
-
         .download-button:hover {
             background-color: #0056b3;
         }
-
         .avatar-preview-container {
             display: flex;
             flex-direction: column;
@@ -112,7 +99,6 @@
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-
         .avatar-preview {
             background-color: #f0f0f0;
             border-radius: 16px;
@@ -126,8 +112,7 @@
     <h1>DRESS UP SAYO</h1>
     <div class="builder-container">
         <div class="controls">
-            <!-- Панель управления для каждого слоя -->
-            <div class="control-item">
+            <div class="control-item" id="backgroundControl">
                 <span>BACKGROUND</span>
                 <div class="control-buttons">
                     <button onclick="changePreset('background', -1)">&larr;</button>
@@ -135,7 +120,7 @@
                     <button onclick="changePreset('background', 1)">&rarr;</button>
                 </div>
             </div>
-            <div class="control-item">
+            <div class="control-item" id="hatControl">
                 <span>HAT</span>
                 <div class="control-buttons">
                     <button onclick="changePreset('hat', -1)">&larr;</button>
@@ -143,7 +128,7 @@
                     <button onclick="changePreset('hat', 1)">&rarr;</button>
                 </div>
             </div>
-            <div class="control-item">
+            <div class="control-item" id="eyebrowsControl">
                 <span>EYEBROWS</span>
                 <div class="control-buttons">
                     <button onclick="changePreset('eyebrows', -1)">&larr;</button>
@@ -151,7 +136,7 @@
                     <button onclick="changePreset('eyebrows', 1)">&rarr;</button>
                 </div>
             </div>
-            <div class="control-item">
+            <div class="control-item" id="mustacheControl">
                 <span>MUSTACHE</span>
                 <div class="control-buttons">
                     <button onclick="changePreset('mustache', -1)">&larr;</button>
@@ -159,7 +144,7 @@
                     <button onclick="changePreset('mustache', 1)">&rarr;</button>
                 </div>
             </div>
-            <div class="control-item">
+            <div class="control-item" id="clothesControl">
                 <span>CLOTHES</span>
                 <div class="control-buttons">
                     <button onclick="changePreset('clothes', -1)">&larr;</button>
@@ -181,9 +166,7 @@
         const canvas = document.getElementById('avatarCanvas');
         const ctx = canvas.getContext('2d');
         const imageCache = {};
-        const baseImageSrc = 'images/base/base.png'; // Путь к базовому изображению
-        let baseImage;
-
+        const layers = ['background', 'base', 'hat', 'eyebrows', 'mustache', 'clothes'];
         const presets = {
             background: 1,
             hat: 1,
@@ -192,92 +175,66 @@
             clothes: 1
         };
 
-        async function loadBaseImage() {
-            const img = new Image();
-            img.crossOrigin = "anonymous";
-            img.src = baseImageSrc;
-            await img.decode();
-            baseImage = img;
-            console.log("Базовое изображение загружено.");
-        }
-
         async function loadImage(part, value) {
             const src = `images/${part}/${value}.png`;
+            if (imageCache[src]) return imageCache[src];
             return new Promise((resolve, reject) => {
-                if (imageCache[src]) {
-                    resolve(imageCache[src]);
-                } else {
-                    const img = new Image();
-                    img.crossOrigin = "anonymous";
-                    img.src = src;
-                    img.onload = () => {
-                        imageCache[src] = img;
-                        console.log(`Изображение загружено для ${part}`);
-                        resolve(img);
-                    };
-                    img.onerror = () => {
-                        console.error(`Не удалось загрузить изображение для ${part}: ${src}`);
-                        reject(new Error(`Не удалось загрузить изображение для ${part}: ${src}`));
-                    };
-                }
+                const img = new Image();
+                img.crossOrigin = "anonymous";
+                img.src = src;
+                img.onload = () => {
+                    imageCache[src] = img;
+                    resolve(img);
+                };
+                img.onerror = () => {
+                    console.error(`Не удалось загрузить изображение для ${part}: ${src}`);
+                    reject(new Error(`Не удалось загрузить изображение для ${part}: ${src}`));
+                };
             });
         }
 
         async function drawAvatar(ctx = canvas.getContext('2d'), width = 400, height = 400) {
             ctx.clearRect(0, 0, width, height);
-            const layers = ['background', 'base', 'hat', 'eyebrows', 'mustache', 'clothes'];
-            for (let layer of layers) {
+            for (const layer of layers) {
                 try {
-                    let img = layer === 'base' ? baseImage : await loadImage(layer, presets[layer]);
+                    const img = await loadImage(layer, presets[layer] || 1);
                     ctx.drawImage(img, 0, 0, width, height);
                 } catch (error) {
                     console.error(`Ошибка при отрисовке слоя ${layer}:`, error);
                 }
             }
-            console.log("Аватар отрисован.");
         }
 
         function changePreset(part, delta) {
-            presets[part] = Math.max(1, presets[part] + delta);
+            presets[part] = Math.max(1, (presets[part] || 1) + delta);
             document.getElementById(`${part}Preset`).textContent = presets[part];
-            drawAvatar();
+            requestAnimationFrame(() => drawAvatar());
         }
 
         function randomizeAvatar() {
-            Object.keys(presets).forEach(part => {
-                presets[part] = getRandomPresetValue();
+            for (const part in presets) {
+                presets[part] = Math.floor(Math.random() * 5) + 1;
                 document.getElementById(`${part}Preset`).textContent = presets[part];
-            });
-            drawAvatar();
-        }
-
-        function getRandomPresetValue() {
-            return Math.floor(Math.random() * 5) + 1;
+            }
+            requestAnimationFrame(() => drawAvatar());
         }
 
         async function downloadAvatar() {
             const tempCanvas = document.createElement('canvas');
             tempCanvas.width = 1200;
             tempCanvas.height = 1200;
-            const tempCtx = tempCanvas.getContext('2d');
-            await drawAvatar(tempCtx, 1200, 1200);
-
+            await drawAvatar(tempCanvas.getContext('2d'), 1200, 1200);
             tempCanvas.toBlob(blob => {
-                if (blob) {
-                    const link = document.createElement('a');
-                    link.download = 'avatar.png';
-                    link.href = URL.createObjectURL(blob);
-                    link.click();
-                    URL.revokeObjectURL(link.href);
-                } else {
-                    console.error("Ошибка при создании изображения для скачивания.");
-                }
+                const link = document.createElement('a');
+                link.download = 'avatar.png';
+                link.href = URL.createObjectURL(blob);
+                link.click();
+                URL.revokeObjectURL(link.href);
             }, 'image/png');
         }
 
         window.onload = async () => {
-            await loadBaseImage();
-            drawAvatar();
+            await drawAvatar();
         };
     </script>
 </body>
