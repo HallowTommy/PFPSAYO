@@ -167,6 +167,16 @@
         const canvas = document.getElementById('avatarCanvas');
         const ctx = canvas.getContext('2d');
         const layers = ['background', 'base', 'hat', 'eyebrows', 'mustache', 'clothes'];
+        
+        // Объект для хранения количества доступных изображений в каждом пресете
+        const presetLimits = {
+            background: 1,
+            hat: 1,
+            eyebrows: 1,
+            mustache: 1,
+            clothes: 1
+        };
+
         const presets = {
             background: 1,
             hat: 1,
@@ -174,13 +184,7 @@
             mustache: 1,
             clothes: 1
         };
-        const presetLimits = {
-            background: 10, // Максимальные значения можно изменять в зависимости от фактических данных
-            hat: 5,
-            eyebrows: 3,
-            mustache: 7,
-            clothes: 6
-        };
+
         const imageCache = {};
         const baseImageSrc = 'images/base/base.png';
 
