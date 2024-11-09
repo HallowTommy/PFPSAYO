@@ -166,16 +166,25 @@
     <script>
         const canvas = document.getElementById('avatarCanvas');
         const ctx = canvas.getContext('2d');
-        const imageCache = {};
         const layers = ['background', 'base', 'hat', 'eyebrows', 'mustache', 'clothes'];
-        const presets = {
+        const presets = JSON.parse(localStorage.getItem('presets')) || {
             background: 1,
             hat: 1,
             eyebrows: 1,
             mustache: 1,
             clothes: 1
         };
+        const imageCache = {};
         const baseImageSrc = 'images/base/base.png'; // Путь к базовому изображению
+
+        async function preloadImages() {
+            for (const layer of layers) {
+                const maxPresets = 5; // Максимальное количество пресетов для каждого слоя
+                for (let i = 1; i <= maxPresets; i++) {
+                    await loadImage(layer, i);
+                }
+            }
+        }
 
         async function loadImage(part, value) {
             const src = part === 'base' ? baseImageSrc : `images/${part}/${value}.png`;
@@ -210,6 +219,7 @@
         function changePreset(part, delta) {
             presets[part] = Math.max(1, (presets[part] || 1) + delta);
             document.getElementById(`${part}Preset`).textContent = presets[part];
+            localStorage.setItem('presets', JSON.stringify(presets)); // Сохранение в localStorage
             requestAnimationFrame(() => drawAvatar());
         }
 
@@ -218,6 +228,7 @@
                 presets[part] = Math.floor(Math.random() * 5) + 1;
                 document.getElementById(`${part}Preset`).textContent = presets[part];
             }
+            localStorage.setItem('presets', JSON.stringify(presets)); // Сохранение в localStorage
             requestAnimationFrame(() => drawAvatar());
         }
 
@@ -236,7 +247,11 @@
         }
 
         window.onload = async () => {
-            await drawAvatar();
+            await preloadImages();
+            for (const part in presets) {
+                document.getElementById(`${part}Preset`).textContent = presets[part];
+            }
+            drawAvatar();
         };
     </script>
 </body>
