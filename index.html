@@ -168,13 +168,18 @@
                 justify-content: space-between;
             }
 
-            .control-item span, .control-buttons button, .preset-value {
-                font-size: 14px;
+            .control-buttons button {
+                padding: 3px 8px; /* Уменьшено */
+                font-size: 12px; /* Уменьшено */
+            }
+
+            .control-buttons .preset-value {
+                width: 25px; /* Уменьшено */
             }
 
             .control-actions {
                 margin-top: 20px;
-                gap: 8px; /* Уменьшение расстояния между кнопками */
+                gap: 8px;
             }
 
             .download-button {
@@ -207,6 +212,15 @@
 
             .control-item {
                 margin-bottom: 3px;
+            }
+
+            .control-buttons button {
+                padding: 2px 6px; /* Дополнительное уменьшение для узких экранов */
+                font-size: 10px; /* Уменьшено */
+            }
+
+            .control-buttons .preset-value {
+                width: 20px; /* Уменьшено */
             }
 
             .control-item span, .control-buttons button, .preset-value {
@@ -285,3 +299,4 @@
     </script>
 </body>
 </html>
+
