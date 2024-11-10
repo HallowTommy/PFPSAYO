@@ -77,7 +77,7 @@
         
         .control-buttons button {
             padding: 5px 10px;
-            font-size: 12px; /* Уменьшен размер кнопок */
+            font-size: 12px; /* Уменьшенный размер стрелок */
             cursor: pointer;
             border: 1px solid #ccc;
             background-color: #ffffff;
@@ -142,8 +142,8 @@
         @media (max-width: 768px) {
             h1 {
                 font-size: 24px;
-                margin-top: 20px; /* Увеличенный отступ сверху */
-                margin-bottom: 20px; /* Увеличенный отступ снизу */
+                margin-top: 20px;
+                margin-bottom: 20px;
             }
 
             .builder-container {
@@ -169,8 +169,12 @@
                 justify-content: space-between;
             }
 
-            .control-item span, .control-buttons button, .preset-value {
+            .control-item span, .preset-value {
                 font-size: 14px;
+            }
+
+            .control-buttons button {
+                font-size: 10px; /* Сохранён уменьшенный размер стрелок */
             }
 
             .control-actions {
@@ -187,8 +191,8 @@
         @media (max-width: 480px) {
             h1 {
                 font-size: 20px;
-                margin-top: 15px; /* Отступ сверху */
-                margin-bottom: 15px; /* Отступ снизу */
+                margin-top: 15px;
+                margin-bottom: 15px;
             }
 
             .builder-container {
@@ -211,8 +215,12 @@
                 margin-bottom: 3px;
             }
 
-            .control-item span, .control-buttons button, .preset-value {
+            .control-item span, .preset-value {
                 font-size: 12px;
+            }
+
+            .control-buttons button {
+                font-size: 8px; /* Уменьшен размер кнопок для узких экранов */
             }
 
             .control-actions {
@@ -287,4 +295,3 @@
     </script>
 </body>
 </html>
-
