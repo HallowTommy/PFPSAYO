@@ -20,7 +20,7 @@
             min-height: 100vh;
             background-color: #000000;
             margin: 0;
-            padding: 0; /* Убрано дополнительное padding */
+            padding: 0;
             overflow: hidden;
         }
         
@@ -40,7 +40,6 @@
             width: 100%;
             justify-content: center;
             align-items: stretch;
-            margin-top: -20px; /* Поднятие всего контента выше */
         }
         
         .controls {
@@ -142,14 +141,14 @@
         @media (max-width: 768px) {
             h1 {
                 font-size: 24px;
-                margin-bottom: 10px; /* Минимальный отступ между заголовком и контейнерами */
+                margin-top: 5px; /* Уменьшение отступов для заголовка */
+                margin-bottom: 10px;
             }
 
             .builder-container {
                 flex-direction: column;
                 align-items: center;
                 gap: 10px;
-                margin-top: -10px; /* Дополнительное поднятие для мобильных устройств */
             }
 
             .controls, .avatar-preview-container {
@@ -161,6 +160,10 @@
             .avatar-preview {
                 width: 375px;
                 height: 375px;
+            }
+
+            .control-item {
+                gap: 5px; /* Уменьшение отступов между строками панели управления */
             }
 
             .control-item span, .control-buttons button, .preset-value {
@@ -176,12 +179,12 @@
         @media (max-width: 480px) {
             h1 {
                 font-size: 20px;
-                margin-bottom: 5px; /* Минимальный отступ для очень узких экранов */
+                margin-top: 0; /* Минимальные отступы для заголовка */
+                margin-bottom: 5px;
             }
 
             .builder-container {
                 gap: 10px;
-                margin-top: -10px; /* Дополнительное поднятие для узких экранов */
             }
 
             .controls, .avatar-preview-container {
@@ -193,6 +196,10 @@
             .avatar-preview {
                 width: 275px;
                 height: 275px;
+            }
+
+            .control-item {
+                gap: 3px; /* Ещё меньшее расстояние для очень узких экранов */
             }
 
             .control-item span, .control-buttons button, .preset-value {
