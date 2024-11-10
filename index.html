@@ -58,7 +58,7 @@
         
         .control-item {
             display: flex;
-            align-items: center;
+            align-items: center; /* Центрирование по вертикали */
             justify-content: space-between;
             width: 100%;
         }
@@ -167,24 +167,7 @@
                 justify-content: center; /* Центрирование текста и кнопок */
             }
 
-            .control-item span {
-                flex-basis: 40%;
-                text-align: right;
-                margin-right: 10px;
-                font-size: 14px;
-            }
-
-            .control-buttons {
-                flex-basis: 60%;
-                justify-content: flex-start;
-            }
-
-            .control-buttons button {
-                font-size: 12px;
-                padding: 5px 8px;
-            }
-
-            .control-buttons .preset-value {
+            .control-item span, .control-buttons button, .preset-value {
                 font-size: 14px;
             }
 
@@ -221,24 +204,7 @@
                 justify-content: center; /* Центрирование текста и кнопок */
             }
 
-            .control-item span {
-                flex-basis: 45%;
-                text-align: right;
-                margin-right: 5px;
-                font-size: 12px;
-            }
-
-            .control-buttons {
-                flex-basis: 55%;
-                justify-content: flex-start;
-            }
-
-            .control-buttons button {
-                font-size: 10px;
-                padding: 4px 6px;
-            }
-
-            .control-buttons .preset-value {
+            .control-item span, .control-buttons button, .preset-value {
                 font-size: 12px;
             }
 
@@ -309,5 +275,4 @@
     </script>
 </body>
 </html>
-
 
