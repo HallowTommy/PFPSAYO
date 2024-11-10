@@ -76,8 +76,8 @@
         }
         
         .control-buttons button {
-            padding: 5px 10px;
-            font-size: 14px;
+            padding: 5px 8px; /* Уменьшено */
+            font-size: 12px; /* Уменьшено */
             cursor: pointer;
             border: 1px solid #ccc;
             background-color: #ffffff;
@@ -87,28 +87,28 @@
         }
         
         .control-buttons .preset-value {
-            width: 30px;
+            width: 25px; /* Уменьшено */
             text-align: center;
             font-weight: 400;
             color: black;
         }
         
         .control-actions {
-            margin-top: 30px;
+            margin-top: 20px; /* Уменьшено */
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px; /* Уменьшено */
             width: 100%;
         }
         
         .download-button {
-            padding: 12px;
+            padding: 10px; /* Уменьшено */
             background-color: #000000;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 14px; /* Уменьшено */
             text-align: center;
             font-family: 'Righteous', sans-serif;
             font-weight: 400;
@@ -153,73 +153,69 @@
             }
 
             .controls, .avatar-preview-container {
-                width: 375px;
-                height: 375px;
+                width: 360px; /* Уменьшено для мобильных */
+                height: 360px; /* Уменьшено для мобильных */
                 padding: 20px;
             }
 
             .avatar-preview {
-                width: 375px;
-                height: 375px;
+                width: 320px;
+                height: 320px;
             }
 
             .control-item {
-                margin-bottom: 5px; /* Уменьшение расстояния между строками */
-                justify-content: space-between;
+                margin-bottom: 5px;
+                gap: 8px; /* Сокращение расстояния между элементами */
             }
 
             .control-item span, .control-buttons button, .preset-value {
-                font-size: 14px;
-            }
-
-            .control-actions {
-                margin-top: 20px;
-                gap: 8px; /* Уменьшение расстояния между кнопками */
+                font-size: 12px; /* Уменьшено */
             }
 
             .download-button {
-                font-size: 14px;
+                font-size: 12px;
                 padding: 8px;
             }
         }
 
         @media (max-width: 480px) {
             h1 {
-                font-size: 20px;
+                font-size: 18px;
                 margin-bottom: 5px;
             }
 
             .builder-container {
-                gap: 10px;
+                gap: 8px;
                 margin-top: -10px;
             }
 
             .controls, .avatar-preview-container {
-                width: 275px;
-                height: 275px;
-                padding: 15px;
+                width: 270px; /* Уменьшено для очень узких экранов */
+                height: 270px;
+                padding: 15px; /* Уменьшено */
             }
 
             .avatar-preview {
-                width: 275px;
-                height: 275px;
+                width: 250px;
+                height: 250px;
             }
 
             .control-item {
-                margin-bottom: 3px;
+                margin-bottom: 4px;
+                gap: 5px;
             }
 
             .control-item span, .control-buttons button, .preset-value {
-                font-size: 12px;
+                font-size: 10px; /* Ещё меньше для узких экранов */
             }
 
             .control-actions {
-                margin-top: 10px;
+                margin-top: 5px;
                 gap: 5px;
             }
 
             .download-button {
-                font-size: 12px;
+                font-size: 10px;
                 padding: 6px;
             }
         }
@@ -281,8 +277,6 @@
     </div>
 
     <script>
-        // JavaScript-код остается без изменений
+        // JavaScript-код остаётся без изменений
     </script>
-</body>
-</html>
 
