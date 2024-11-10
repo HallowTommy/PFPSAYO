@@ -5,25 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dress up SAYO - PFP Builder</title>
     <style>
+        /* Подключение шрифта Righteous */
+        @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
         /* Основные стили */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Righteous', sans-serif;
+            font-size: 30px;
+            color: white;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
-            background-color: #f0f0f0;
+            background-color: #000000;
             margin: 0;
             padding: 20px;
             overflow: hidden;
         }
+        
         h1 {
-            font-size: 24px;
+            font-size: 30px;
             margin-top: -150px;
             margin-bottom: 100px;
             text-transform: uppercase;
+            color: white;
         }
+        
         .builder-container {
             display: flex;
             gap: 40px;
@@ -33,6 +41,7 @@
             align-items: stretch;
             margin-top: -20px;
         }
+        
         .controls {
             width: 260px;
             background-color: #ffffff;
@@ -45,32 +54,41 @@
             justify-content: space-between;
             align-items: center;
         }
+        
         .control-item {
             display: flex;
             align-items: center;
             justify-content: space-between;
             width: 100%;
         }
+        
         .control-item span {
             font-weight: bold;
+            color: black;
         }
+        
         .control-buttons {
             display: flex;
             align-items: center;
             gap: 10px;
         }
+        
         .control-buttons button {
             padding: 5px 10px;
             font-size: 14px;
             cursor: pointer;
             border: 1px solid #ccc;
             background-color: #ffffff;
+            color: black;
         }
+        
         .control-buttons .preset-value {
             width: 30px;
             text-align: center;
             font-weight: bold;
+            color: black;
         }
+        
         .control-actions {
             margin-top: 30px;
             display: flex;
@@ -78,9 +96,10 @@
             gap: 10px;
             width: 100%;
         }
+        
         .download-button {
             padding: 12px;
-            background-color: #007bff;
+            background-color: #000000;
             color: white;
             border: none;
             border-radius: 5px;
@@ -88,9 +107,11 @@
             font-size: 16px;
             text-align: center;
         }
+        
         .download-button:hover {
-            background-color: #0056b3;
+            background-color: #333333;
         }
+        
         .avatar-preview-container {
             display: flex;
             flex-direction: column;
@@ -100,6 +121,7 @@
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+        
         .avatar-preview {
             background-color: #f0f0f0;
             border-radius: 16px;
