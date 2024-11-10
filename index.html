@@ -44,9 +44,9 @@
         }
         
         .controls {
-            width: 540px;
+            width: 540px; /* Ширина панели управления такая же, как у области предварительного просмотра */
             background-color: #ffffff;
-            padding: 40px;
+            padding: 40px; /* Установлены такие же отступы, как у области предварительного просмотра */
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             display: flex;
@@ -122,88 +122,25 @@
             flex-direction: column;
             align-items: center;
             background-color: #ffffff;
-            padding: 40px;
+            padding: 40px; /* Увеличенный отступ для симметрии */
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 500px;
-            height: 500px;
+            width: 500px; /* Увеличенная ширина */
+            height: 500px; /* Увеличенная высота */
         }
         
         .avatar-preview {
             background-color: #f0f0f0;
             border-radius: 16px;
             border: 2px solid #333;
-            width: 500px;
+            width: 500px; /* Увеличенный размер аватара */
             height: 500px;
-        }
-
-        /* Адаптивные стили для мобильного экрана */
-        @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-
-            h1 {
-                font-size: 24px;
-                margin-bottom: 30px;
-            }
-
-            .builder-container {
-                flex-direction: column;
-                align-items: center;
-                gap: 20px;
-            }
-
-            .controls, .avatar-preview-container {
-                width: 100%;
-                padding: 20px;
-                box-sizing: border-box;
-            }
-
-            .avatar-preview {
-                width: 100%;
-                height: auto;
-            }
-
-            .control-item span, .control-buttons button, .preset-value {
-                font-size: 14px;
-            }
-
-            .download-button {
-                font-size: 14px;
-                padding: 10px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 20px;
-                margin-bottom: 20px;
-            }
-
-            .controls, .avatar-preview-container {
-                width: 100%;
-                padding: 15px;
-            }
-
-            .control-item span, .control-buttons button, .preset-value {
-                font-size: 12px;
-            }
-
-            .download-button {
-                font-size: 12px;
-                padding: 8px;
-            }
         }
     </style>
 </head>
 <body>
     <h1>DRESS UP SAYO</h1>
     <div class="builder-container">
-        <div class="avatar-preview-container">
-            <canvas id="avatarCanvas" class="avatar-preview" width="500" height="500"></canvas>
-        </div>
-
         <div class="controls">
             <div class="control-item">
                 <span>BACKGROUND</span>
@@ -250,10 +187,13 @@
                 <button class="download-button" onclick="downloadAvatar()">DOWNLOAD YOUR PICTURE</button>
             </div>
         </div>
+        <div class="avatar-preview-container">
+            <canvas id="avatarCanvas" class="avatar-preview" width="500" height="500"></canvas>
+        </div>
     </div>
 
     <script>
-const canvas = document.getElementById('avatarCanvas');
+        const canvas = document.getElementById('avatarCanvas');
         const ctx = canvas.getContext('2d');
         const layers = ['background', 'base', 'headwear', 'eyebrows', 'mustache', 'clothes'];
         
@@ -356,4 +296,3 @@ const canvas = document.getElementById('avatarCanvas');
     </script>
 </body>
 </html>
-
