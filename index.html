@@ -141,7 +141,7 @@
         @media (max-width: 768px) {
             h1 {
                 font-size: 24px;
-                margin-top: 10px; /* Уменьшение отступов для заголовка */
+                margin-top: 10px;
                 margin-bottom: 10px;
             }
 
@@ -163,10 +163,28 @@
             }
 
             .control-item {
-                gap: 5px; /* Уменьшение отступов между строками панели управления */
+                gap: 5px;
+                justify-content: center; /* Центрирование текста и кнопок */
             }
 
-            .control-item span, .control-buttons button, .preset-value {
+            .control-item span {
+                flex-basis: 40%;
+                text-align: right;
+                margin-right: 10px;
+                font-size: 14px;
+            }
+
+            .control-buttons {
+                flex-basis: 60%;
+                justify-content: flex-start;
+            }
+
+            .control-buttons button {
+                font-size: 12px;
+                padding: 5px 8px;
+            }
+
+            .control-buttons .preset-value {
                 font-size: 14px;
             }
 
@@ -179,8 +197,8 @@
         @media (max-width: 480px) {
             h1 {
                 font-size: 20px;
-                margin-top: 10; /* Минимальные отступы для заголовка */
-                margin-bottom: 10px;
+                margin-top: 0;
+                margin-bottom: 5px;
             }
 
             .builder-container {
@@ -199,10 +217,28 @@
             }
 
             .control-item {
-                gap: 3px; /* Ещё меньшее расстояние для очень узких экранов */
+                gap: 3px;
+                justify-content: center; /* Центрирование текста и кнопок */
             }
 
-            .control-item span, .control-buttons button, .preset-value {
+            .control-item span {
+                flex-basis: 45%;
+                text-align: right;
+                margin-right: 5px;
+                font-size: 12px;
+            }
+
+            .control-buttons {
+                flex-basis: 55%;
+                justify-content: flex-start;
+            }
+
+            .control-buttons button {
+                font-size: 10px;
+                padding: 4px 6px;
+            }
+
+            .control-buttons .preset-value {
                 font-size: 12px;
             }
 
@@ -273,4 +309,5 @@
     </script>
 </body>
 </html>
+
 
