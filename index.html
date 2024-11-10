@@ -133,8 +133,8 @@
             background-color: #f0f0f0;
             border-radius: 16px;
             border: 2px solid #333;
-            width: 400px;
-            height: 400px;
+            width: 440px; /* Увеличенный размер аватара */
+            height: 440px;
         }
     </style>
 </head>
@@ -183,12 +183,12 @@
                 </div>
             </div>
             <div class="control-actions">
-                <button class="download-button" onclick="randomizeAvatar()">RANDOM</button>
-                <button class="download-button" onclick="downloadAvatar()">DOWNLOAD</button>
+                <button class="download-button" onclick="randomizeAvatar()">RANDOM OUTFIT</button>
+                <button class="download-button" onclick="downloadAvatar()">DOWNLOAD YOUR PICTURE</button>
             </div>
         </div>
         <div class="avatar-preview-container">
-            <canvas id="avatarCanvas" class="avatar-preview" width="400" height="400"></canvas>
+            <canvas id="avatarCanvas" class="avatar-preview" width="440" height="440"></canvas>
         </div>
     </div>
 
@@ -296,3 +296,4 @@
     </script>
 </body>
 </html>
+
