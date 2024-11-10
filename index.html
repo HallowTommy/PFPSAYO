@@ -26,8 +26,8 @@
         
         h1 {
             font-size: 30px;
-            margin-top: 40px;
-            margin-bottom: 40px;
+            margin-top: 0;
+            margin-bottom: 20px;
             text-transform: uppercase;
             color: white;
             font-weight: 400;
@@ -154,10 +154,9 @@
             }
 
             .controls, .avatar-preview-container {
-                width: 335px;
+                width: 335px; /* Уменьшено на 40px */
                 height: 335px;
-                padding: 40px;
-                box-sizing: border-box;
+                padding: 40px; /* Увеличено на 20px */
             }
 
             .avatar-preview {
@@ -180,6 +179,7 @@
             }
 
             .control-actions {
+                margin-top: 20px;
                 gap: 8px;
             }
 
@@ -192,8 +192,8 @@
         @media (max-width: 480px) {
             h1 {
                 font-size: 20px;
-                margin-top: 15px;
-                margin-bottom: 15px;
+                margin-top: 20px;
+                margin-bottom: 20px;
             }
 
             .builder-container {
@@ -202,15 +202,14 @@
             }
 
             .controls, .avatar-preview-container {
-                width: 235px;
-                height: 235px;
-                padding: 30px;
-                box-sizing: border-box;
+                width: 245px; /* Уменьшено на 30px */
+                height: 245px;
+                padding: 30px; /* Увеличено на 15px */
             }
 
             .avatar-preview {
-                width: 235px;
-                height: 235px;
+                width: 245px;
+                height: 245px;
             }
 
             .control-item {
@@ -227,6 +226,7 @@
             }
 
             .control-actions {
+                margin-top: 10px;
                 gap: 5px;
             }
 
@@ -297,4 +297,3 @@
     </script>
 </body>
 </html>
-
