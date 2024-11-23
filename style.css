@@ -105,6 +105,33 @@ h1 {
     width: 30px;
 }
 
+/* Кнопки действий */
+.control-actions {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    align-items: center;
+}
+
+.download-button {
+    padding: 12px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    font-family: 'Patrick Hand', sans-serif;
+    font-weight: 400;
+}
+
+.download-button:hover {
+    background-color: #333333;
+}
+
 /* Предпросмотр аватара */
 .avatar-preview-container {
     display: flex;
