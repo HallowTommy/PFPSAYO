@@ -1,162 +1,64 @@
-/* Подключение шрифта Patrick Hand */
-@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
-
-/* Основные стили */
-body {
-    font-family: 'Patrick Hand', sans-serif;
-    font-size: 30px;
-    color: white;
+.controls-container {
     display: flex;
-    align-items: center;
-    justify-content: center; /* Центрирование контента */
-    min-height: 100vh;
-    background: url('images/background/site-background.jpg') no-repeat center center fixed;
-    background-size: cover;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-
-/* Белый контейнер */
-.generator-wrapper {
-    background-color: white; /* Белый фон */
-    box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.25); /* Тень */
-    border-radius: 16px; /* Закругление углов */
-    padding: 40px; /* Внутренние отступы */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px; /* Расстояние между элементами */
-    max-width: 1200px;
-    width: 90%; /* Адаптивная ширина */
-    text-align: center; /* Центрирование текста */
-}
-
-/* Стили заголовка */
-h1 {
-    font-family: 'Patrick Hand', sans-serif;
-    font-size: 100px; /* Увеличенный размер текста */
-    margin: 0 0 20px;
-    text-transform: uppercase;
-    color: black; /* Чёрный цвет текста */
-    font-weight: 400;
-}
-
-/* Стили контейнеров */
-.builder-container {
-    display: flex;
-    gap: 40px;
-    justify-content: center;
-    align-items: center;
-}
-
-.controls {
-    display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 540px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     gap: 20px;
-    align-items: center;
+}
+
+.control-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    font-family: 'Patrick Hand', sans-serif;
+    font-size: 18px;
+    color: black;
+}
+
+.control-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
 }
 
 .control-item {
     display: flex;
-    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
     gap: 10px;
-}
-
-.control-item span {
-    font-family: 'Patrick Hand', sans-serif;
-    font-size: 20px;
-    color: black; /* Чёрный цвет текста */
 }
 
 .control-buttons {
     display: flex;
-    align-items: center;
     gap: 10px;
+    align-items: center;
 }
 
 .control-buttons button {
-    font-family: 'Patrick Hand', sans-serif;
     padding: 5px 10px;
     font-size: 14px;
     cursor: pointer;
     border: 1px solid #ccc;
     background-color: white;
     color: black;
-    font-weight: 400;
     border-radius: 5px;
+    font-family: 'Patrick Hand', sans-serif;
+    font-weight: 400;
 }
 
-.control-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.download-button {
-    padding: 12px 20px;
-    background-color: #000000;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
+.preset-value {
     font-size: 16px;
     font-family: 'Patrick Hand', sans-serif;
     font-weight: 400;
-    transition: background-color 0.3s;
-}
-
-.download-button:hover {
-    background-color: #333333;
-}
-
-/* Стили для области аватара */
-.avatar-preview-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.avatar-preview {
-    background-color: #f0f0f0;
-    border-radius: 16px;
-    border: 2px solid #333;
-    width: 500px;
-    height: 500px;
-}
-
-/* Адаптивные стили */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 60px;
-    }
-
-    .builder-container {
-        flex-direction: column;
-    }
-
-    .controls, .avatar-preview-container {
-        width: 335px;
-    }
-
-    .avatar-preview {
-        width: 335px;
-        height: 335px;
-    }
-}
-
-@media (max-width: 480px) {
-    h1 {
-        font-size: 40px;
-    }
-
-    .controls, .avatar-preview-container {
-        width: 245px;
-    }
-
-    .avatar-preview {
-        width: 245px;
-        height: 245px;
-    }
+    color: black;
+    text-align: center;
+    width: 30px;
 }
