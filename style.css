@@ -1,161 +1,70 @@
-/* Подключение шрифта Patrick Hand */
-@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dress up SAYO - PFP Builder</title>
+    <!-- Подключение стилей -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Подключение шрифта Patrick Hand -->
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>DRESS UP SAYO</h1>
+    <div class="builder-container">
+        <div class="avatar-preview-container">
+            <canvas id="avatarCanvas" class="avatar-preview" width="500" height="500"></canvas>
+        </div>
 
-/* Основные стили */
-body {
-    font-family: 'Patrick Hand', sans-serif;
-    font-size: 30px;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    min-height: 100vh;
-    background: url('images/background/site-background.jpg') no-repeat center center fixed;
-    background-size: cover;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
+        <div class="controls">
+            <div class="control-item">
+                <span>BACKGROUND</span>
+                <div class="control-buttons">
+                    <button onclick="changePreset('background', -1)">&larr;</button>
+                    <span id="backgroundPreset" class="preset-value">1</span>
+                    <button onclick="changePreset('background', 1)">&rarr;</button>
+                </div>
+            </div>
+            <div class="control-item">
+                <span>HEADWEAR</span>
+                <div class="control-buttons">
+                    <button onclick="changePreset('headwear', -1)">&larr;</button>
+                    <span id="headwearPreset" class="preset-value">1</span>
+                    <button onclick="changePreset('headwear', 1)">&rarr;</button>
+                </div>
+            </div>
+            <div class="control-item">
+                <span>EYEBROWS</span>
+                <div class="control-buttons">
+                    <button onclick="changePreset('eyebrows', -1)">&larr;</button>
+                    <span id="eyebrowsPreset" class="preset-value">1</span>
+                    <button onclick="changePreset('eyebrows', 1)">&rarr;</button>
+                </div>
+            </div>
+            <div class="control-item">
+                <span>MUSTACHE</span>
+                <div class="control-buttons">
+                    <button onclick="changePreset('mustache', -1)">&larr;</button>
+                    <span id="mustachePreset" class="preset-value">1</span>
+                    <button onclick="changePreset('mustache', 1)">&rarr;</button>
+                </div>
+            </div>
+            <div class="control-item">
+                <span>CLOTHES</span>
+                <div class="control-buttons">
+                    <button onclick="changePreset('clothes', -1)">&larr;</button>
+                    <span id="clothesPreset" class="preset-value">1</span>
+                    <button onclick="changePreset('clothes', 1)">&rarr;</button>
+                </div>
+            </div>
+            <div class="control-actions">
+                <button class="download-button" onclick="randomizeAvatar()">RANDOM OUTFIT</button>
+                <button class="download-button" onclick="downloadAvatar()">DOWNLOAD YOUR PICTURE</button>
+            </div>
+        </div>
+    </div>
 
-h1 {
-    font-family: 'Patrick Hand', sans-serif;
-    font-size: 30px;
-    margin-top: 100px;
-    margin-bottom: 100px;
-    text-transform: uppercase;
-    color: white;
-    font-weight: 400;
-}
-
-.builder-container {
-    display: flex;
-    gap: 40px;
-    max-width: 1200px;
-    width: 100%;
-    justify-content: center;
-    align-items: stretch;
-    margin-top: -20px;
-}
-
-.controls {
-    width: 540px;
-    height: 500px;
-    background-color: #ffffff;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.control-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.control-item span {
-    font-family: 'Patrick Hand', sans-serif;
-    font-weight: 400;
-    color: black;
-}
-
-.control-buttons {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.control-buttons button {
-    font-family: 'Patrick Hand', sans-serif;
-    padding: 5px 10px;
-    font-size: 14px;
-    cursor: pointer;
-    border: 1px solid #ccc;
-    background-color: #ffffff;
-    color: black;
-    font-weight: 400;
-}
-
-.control-actions {
-    margin-top: 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-}
-
-.download-button {
-    font-family: 'Patrick Hand', sans-serif;
-    padding: 12px;
-    background-color: #000000;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    text-align: center;
-    font-weight: 400;
-}
-
-.avatar-preview-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #ffffff;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 500px;
-    height: 500px;
-}
-
-.avatar-preview {
-    background-color: #f0f0f0;
-    border-radius: 16px;
-    border: 2px solid #333;
-    width: 500px;
-    height: 500px;
-}
-
-/* Адаптивные стили */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 24px;
-    }
-
-    .builder-container {
-        flex-direction: column;
-    }
-
-    .controls, .avatar-preview-container {
-        width: 335px;
-        height: 335px;
-    }
-
-    .avatar-preview {
-        width: 335px;
-        height: 335px;
-    }
-}
-
-@media (max-width: 480px) {
-    h1 {
-        font-size: 20px;
-    }
-
-    .controls, .avatar-preview-container {
-        width: 245px;
-        height: 245px;
-    }
-
-    .avatar-preview {
-        width: 245px;
-        height: 245px;
-    }
-}
+    <!-- Подключение скриптов -->
+    <script src="script.js"></script>
+</body>
+</html>
