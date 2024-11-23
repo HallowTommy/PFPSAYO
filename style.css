@@ -7,9 +7,8 @@ body {
     font-size: 30px;
     color: white;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center; /* Центрирование контента по вертикали */
+    justify-content: center; /* Центрирование контента */
     min-height: 100vh;
     background: url('images/background/site-background.jpg') no-repeat center center fixed;
     background-size: cover;
@@ -18,12 +17,18 @@ body {
     overflow: hidden;
 }
 
-/* Стили для объединённого блока */
+/* Белый контейнер */
 .generator-wrapper {
+    background-color: white; /* Белый фон */
+    box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.25); /* Тень */
+    border-radius: 16px; /* Закругление углов */
+    padding: 40px; /* Внутренние отступы */
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px; /* Расстояние между элементами */
+    max-width: 1200px;
+    width: 90%; /* Адаптивная ширина */
     text-align: center; /* Центрирование текста */
 }
 
@@ -31,10 +36,9 @@ body {
 h1 {
     font-family: 'Patrick Hand', sans-serif;
     font-size: 100px; /* Увеличенный размер текста */
-    margin-top: 0;
-    margin-bottom: 20px;
+    margin: 0 0 20px;
     text-transform: uppercase;
-    color: black; /* Цвет текста */
+    color: black; /* Чёрный цвет текста */
     font-weight: 400;
 }
 
@@ -50,7 +54,6 @@ h1 {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    justify-content: space-between;
     align-items: center;
 }
 
