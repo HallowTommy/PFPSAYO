@@ -7,32 +7,40 @@ body {
     font-size: 30px;
     color: white;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    justify-content: flex-start;
     min-height: 100vh;
     background-color: #000000;
     margin: 0;
     padding: 0;
-    overflow: hidden;
 }
 
 h1 {
-    font-size: 30px;
-    margin-top: 100px;
-    margin-bottom: 100px;
+    font-size: 100px;
     text-transform: uppercase;
-    color: white;
+    color: black;
     font-weight: 400;
     text-align: center;
+}
+
+/* Основной контейнер */
+.main-container {
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    padding: 40px;
+    max-width: 1200px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
 }
 
 /* Контейнер с панелью управления и предпросмотром */
 .builder-container {
     display: flex;
     gap: 40px;
-    max-width: 1200px;
-    width: 100%;
     justify-content: center;
     align-items: center;
 }
@@ -40,16 +48,12 @@ h1 {
 /* Контейнер панели управления */
 .controls-container {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    width: 100%;
-    max-width: 540px;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    align-items: center;
     gap: 20px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.3); /* Прозрачный фон */
+    border-radius: 8px;
 }
 
 /* Левый блок - Оглавление */
@@ -107,28 +111,24 @@ h1 {
 
 /* Кнопки действий */
 .control-actions {
-    margin-top: 20px;
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-    align-items: center;
+    justify-content: center;
+    gap: 20px;
 }
 
-.download-button {
-    padding: 12px;
+.action-button {
+    padding: 12px 20px;
     background-color: #000000;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    text-align: center;
     font-family: 'Patrick Hand', sans-serif;
     font-weight: 400;
 }
 
-.download-button:hover {
+.action-button:hover {
     background-color: #333333;
 }
 
