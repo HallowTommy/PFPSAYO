@@ -32,7 +32,10 @@ async function loadImage(part, value) {
             imageCache[src] = img;
             resolve(img);
         };
-        img.onerror = () => reject(new Error(`Failed to load ${src}`));
+        img.onerror = () => {
+            console.error(`Не удалось загрузить изображение для ${part}: ${src}`);
+            reject(new Error(`Не удалось загрузить изображение для ${part}: ${src}`));
+        };
     });
 }
 
@@ -43,7 +46,7 @@ async function drawAvatar() {
             const img = await loadImage(layer, presets[layer]);
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
         } catch (error) {
-            console.error(error);
+            console.error(`Ошибка при отрисовке слоя ${layer}:`, error);
         }
     }
 }
@@ -76,17 +79,22 @@ async function downloadAvatar() {
             const img = await loadImage(layer, presets[layer]);
             tempCtx.drawImage(img, 0, 0, tempCanvas.width, tempCanvas.height);
         } catch (error) {
-            console.error(error);
+            console.error(`Ошибка при отрисовке слоя ${layer}:`, error);
         }
     }
 
     tempCanvas.toBlob(blob => {
         const link = document.createElement('a');
-        link.download = 'SAYO_PFP.png';
+        link.download = '$SAYO.png';
         link.href = URL.createObjectURL(blob);
         link.click();
         URL.revokeObjectURL(link.href);
     }, 'image/png');
 }
 
-window.onload = drawAvatar;
+window.onload = async () => {
+    for (const part in presets) {
+        document.getElementById(`${part}Preset`).textContent = presets[part];
+    }
+    drawAvatar();
+};
