@@ -1,50 +1,71 @@
-<div class="controls-container">
-    <div class="control-left">
-        <span>BACKGROUND</span>
-        <span>HEADWEAR</span>
-        <span>EYEBROWS</span>
-        <span>MUSTACHE</span>
-        <span>CLOTHES</span>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dress up SAYO - PFP Builder</title>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>DRESS UP SAYO</h1>
+    <div class="builder-container">
+        <div class="avatar-preview-container">
+            <canvas id="avatarCanvas" class="avatar-preview" width="500" height="500"></canvas>
+        </div>
+
+        <div class="controls-container">
+            <div class="control-left">
+                <span>BACKGROUND</span>
+                <span>HEADWEAR</span>
+                <span>EYEBROWS</span>
+                <span>MUSTACHE</span>
+                <span>CLOTHES</span>
+            </div>
+            <div class="control-right">
+                <div class="control-item">
+                    <div class="control-buttons">
+                        <button onclick="changePreset('background', -1)">&larr;</button>
+                        <span id="backgroundPreset" class="preset-value">1</span>
+                        <button onclick="changePreset('background', 1)">&rarr;</button>
+                    </div>
+                </div>
+                <div class="control-item">
+                    <div class="control-buttons">
+                        <button onclick="changePreset('headwear', -1)">&larr;</button>
+                        <span id="headwearPreset" class="preset-value">1</span>
+                        <button onclick="changePreset('headwear', 1)">&rarr;</button>
+                    </div>
+                </div>
+                <div class="control-item">
+                    <div class="control-buttons">
+                        <button onclick="changePreset('eyebrows', -1)">&larr;</button>
+                        <span id="eyebrowsPreset" class="preset-value">1</span>
+                        <button onclick="changePreset('eyebrows', 1)">&rarr;</button>
+                    </div>
+                </div>
+                <div class="control-item">
+                    <div class="control-buttons">
+                        <button onclick="changePreset('mustache', -1)">&larr;</button>
+                        <span id="mustachePreset" class="preset-value">1</span>
+                        <button onclick="changePreset('mustache', 1)">&rarr;</button>
+                    </div>
+                </div>
+                <div class="control-item">
+                    <div class="control-buttons">
+                        <button onclick="changePreset('clothes', -1)">&larr;</button>
+                        <span id="clothesPreset" class="preset-value">1</span>
+                        <button onclick="changePreset('clothes', 1)">&rarr;</button>
+                    </div>
+                </div>
+                <div class="control-actions">
+                    <button class="download-button" onclick="randomizeAvatar()">RANDOM OUTFIT</button>
+                    <button class="download-button" onclick="downloadAvatar()">DOWNLOAD YOUR PICTURE</button>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="control-right">
-        <div class="control-item">
-            <div class="control-buttons">
-                <button onclick="changePreset('background', -1)">&larr;</button>
-                <span id="backgroundPreset" class="preset-value">1</span>
-                <button onclick="changePreset('background', 1)">&rarr;</button>
-            </div>
-        </div>
-        <div class="control-item">
-            <div class="control-buttons">
-                <button onclick="changePreset('headwear', -1)">&larr;</button>
-                <span id="headwearPreset" class="preset-value">1</span>
-                <button onclick="changePreset('headwear', 1)">&rarr;</button>
-            </div>
-        </div>
-        <div class="control-item">
-            <div class="control-buttons">
-                <button onclick="changePreset('eyebrows', -1)">&larr;</button>
-                <span id="eyebrowsPreset" class="preset-value">1</span>
-                <button onclick="changePreset('eyebrows', 1)">&rarr;</button>
-            </div>
-        </div>
-        <div class="control-item">
-            <div class="control-buttons">
-                <button onclick="changePreset('mustache', -1)">&larr;</button>
-                <span id="mustachePreset" class="preset-value">1</span>
-                <button onclick="changePreset('mustache', 1)">&rarr;</button>
-            </div>
-        </div>
-        <div class="control-item">
-            <div class="control-buttons">
-                <button onclick="changePreset('clothes', -1)">&larr;</button>
-                <span id="clothesPreset" class="preset-value">1</span>
-                <button onclick="changePreset('clothes', 1)">&rarr;</button>
-            </div>
-        </div>
-        <div class="control-actions">
-            <button class="download-button" onclick="randomizeAvatar()">RANDOM OUTFIT</button>
-            <button class="download-button" onclick="downloadAvatar()">DOWNLOAD YOUR PICTURE</button>
-        </div>
-    </div>
-</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
