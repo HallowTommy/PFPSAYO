@@ -17,84 +17,95 @@ body {
 }
 
 h1 {
-    font-size: 60px; /* Уменьшен заголовок */
+    font-size: 60px;
     text-transform: uppercase;
     color: black;
     font-weight: 400;
     text-align: center;
-    margin: 0 0 20px 0; /* Уменьшены отступы */
+    margin: 0;
 }
 
-/* Основной контейнер */
+/* Главный контейнер */
 .main-container {
     background-color: white;
     border-radius: 16px;
     box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.25);
+    width: 80vw;
+    height: 78vh;
+    display: grid;
+    grid-template-rows: auto 1fr; /* Заголовок + контент */
+    grid-template-columns: 1fr 1fr; /* 2 столбца */
+    gap: 20px; /* Зазоры между элементами */
     padding: 20px;
-    width: 80vw; /* Ширина */
-    height: 78vh; /* Высота */
+    box-sizing: border-box;
+}
+
+/* Контентная сетка */
+.content-grid {
+    display: contents; /* Сетка подчиняется структуре main-container */
+}
+
+/* Область предварительного просмотра */
+.avatar-preview-container {
+    grid-row: 2; /* 2-я строка */
+    grid-column: 1; /* 1-й столбец */
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    gap: 20px; /* Уменьшен зазор между элементами */
-    box-sizing: border-box; /* Включает padding в общую ширину и высоту */
+    justify-content: center;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.3); /* Прозрачный фон */
 }
 
-/* Контейнер с панелью управления и предпросмотром */
-.builder-container {
-    display: flex;
-    flex-wrap: wrap; /* Позволяет перенос элементов на следующую строку */
-    gap: 20px; /* Уменьшен зазор между блоками */
-    justify-content: center;
-    align-items: center;
+.avatar-preview {
+    background-color: rgba(240, 240, 240, 0.8); /* Полупрозрачный фон для аватара */
+    border-radius: 16px;
+    border: 2px solid #333;
+    width: 100%;
+    height: 100%;
 }
 
-/* Контейнер панели управления */
+/* Панель управления */
 .controls-container {
+    grid-row: 2; /* 2-я строка */
+    grid-column: 2; /* 2-й столбец */
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px; /* Уменьшен зазор между элементами панели */
-    padding: 15px; /* Уменьшен padding */
+    gap: 15px;
+    padding: 15px;
     background-color: rgba(255, 255, 255, 0.3); /* Прозрачный фон */
     border-radius: 8px;
-    width: 90%; /* Панель занимает меньше места */
-    max-width: 500px; /* Ограничение максимальной ширины */
 }
 
-/* Контейнер для строк */
+/* Общие стили для панели управления */
 .control-items {
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Уменьшен зазор между строками */
+    gap: 10px;
     width: 100%;
 }
 
-/* Одна строка */
 .control-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
 }
 
-/* Метки */
 .control-label {
-    font-size: 16px; /* Уменьшен шрифт */
+    font-size: 16px;
     color: black;
 }
 
-/* Кнопки управления */
 .control-buttons {
     display: flex;
-    align-items: center;
-    gap: 5px; /* Уменьшен зазор между кнопками */
+    gap: 5px;
 }
 
 .control-buttons button {
-    padding: 5px 8px; /* Уменьшен padding */
-    font-size: 12px; /* Уменьшен шрифт */
+    padding: 5px 8px;
+    font-size: 12px;
     cursor: pointer;
     border: 1px solid #ccc;
     background-color: white;
@@ -105,54 +116,28 @@ h1 {
 }
 
 .preset-value {
-    font-size: 14px; /* Уменьшен шрифт */
-    font-family: 'Patrick Hand', sans-serif;
-    font-weight: 400;
-    color: black;
+    font-size: 14px;
     text-align: center;
-    width: 25px; /* Уменьшена ширина */
+    width: 25px;
 }
 
-/* Кнопки действий */
 .control-actions {
     display: flex;
     justify-content: center;
-    gap: 10px; /* Уменьшен зазор между кнопками */
-    margin-top: 10px; /* Уменьшен отступ сверху */
+    gap: 10px;
 }
 
 .action-button {
-    padding: 8px 16px; /* Уменьшен padding */
+    padding: 8px 16px;
     background-color: #000000;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 14px; /* Уменьшен шрифт */
+    font-size: 14px;
     font-family: 'Patrick Hand', sans-serif;
-    font-weight: 400;
 }
 
 .action-button:hover {
     background-color: #333333;
-}
-
-/* Прозрачный контейнер для области предварительного просмотра */
-.avatar-preview-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px; /* Уменьшен padding */
-    border-radius: 8px;
-    background-color: rgba(255, 255, 255, 0.3); /* Прозрачный фон */
-    width: 300px; /* Уменьшена ширина */
-    height: 300px; /* Уменьшена высота */
-}
-
-.avatar-preview {
-    background-color: rgba(240, 240, 240, 0.8); /* Полупрозрачный фон для аватара */
-    border-radius: 16px;
-    border: 2px solid #333;
-    width: 100%; /* Соответствие ширине контейнера */
-    height: 100%; /* Соответствие высоте контейнера */
 }
