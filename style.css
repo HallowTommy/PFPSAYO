@@ -9,7 +9,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center; /* Центрирование контента по вертикали */
     min-height: 100vh;
     background: url('images/background/site-background.jpg') no-repeat center center fixed;
     background-size: cover;
@@ -20,44 +20,33 @@ body {
 
 /* Стили для объединённого блока */
 .generator-wrapper {
-    background-color: white; /* Белый фон */
-    box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.25); /* Тень */
-    border-radius: 16px; /* Закругление углов */
-    padding: 40px; /* Отступы внутри блока */
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px; /* Расстояние между элементами */
-    max-width: 1200px; /* Максимальная ширина */
-    margin: 50px auto; /* Центрирование блока */
+    text-align: center; /* Центрирование текста */
 }
 
 /* Стили заголовка */
 h1 {
     font-family: 'Patrick Hand', sans-serif;
-    font-size: 30px; /* Размер текста */
+    font-size: 100px; /* Увеличенный размер текста */
     margin-top: 0;
     margin-bottom: 20px;
     text-transform: uppercase;
     color: black; /* Цвет текста */
     font-weight: 400;
-    text-align: center; /* Центрирование */
 }
 
 /* Стили контейнеров */
 .builder-container {
     display: flex;
     gap: 40px;
-    max-width: 1200px;
-    width: 100%;
     justify-content: center;
-    align-items: stretch;
+    align-items: center;
 }
 
 .controls {
-    width: 540px;
-    height: auto;
-    padding: 20px;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -65,13 +54,65 @@ h1 {
     align-items: center;
 }
 
+.control-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.control-item span {
+    font-family: 'Patrick Hand', sans-serif;
+    font-size: 20px;
+    color: black; /* Чёрный цвет текста */
+}
+
+.control-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.control-buttons button {
+    font-family: 'Patrick Hand', sans-serif;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background-color: white;
+    color: black;
+    font-weight: 400;
+    border-radius: 5px;
+}
+
+.control-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.download-button {
+    padding: 12px 20px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Patrick Hand', sans-serif;
+    font-weight: 400;
+    transition: background-color 0.3s;
+}
+
+.download-button:hover {
+    background-color: #333333;
+}
+
+/* Стили для области аватара */
 .avatar-preview-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 40px;
-    width: 500px;
-    height: 500px;
 }
 
 .avatar-preview {
@@ -85,7 +126,7 @@ h1 {
 /* Адаптивные стили */
 @media (max-width: 768px) {
     h1 {
-        font-size: 24px;
+        font-size: 60px;
     }
 
     .builder-container {
@@ -94,7 +135,6 @@ h1 {
 
     .controls, .avatar-preview-container {
         width: 335px;
-        height: auto;
     }
 
     .avatar-preview {
@@ -105,12 +145,11 @@ h1 {
 
 @media (max-width: 480px) {
     h1 {
-        font-size: 20px;
+        font-size: 40px;
     }
 
     .controls, .avatar-preview-container {
         width: 245px;
-        height: auto;
     }
 
     .avatar-preview {
