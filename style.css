@@ -28,13 +28,14 @@ h1 {
 .main-container {
     background-color: white;
     border-radius: 16px;
-    box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.25); /* Новая тень */
+    box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.25);
     padding: 20px;
     width: 80vw; /* Ширина */
     height: 78vh; /* Высота */
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: center; /* Центрирование по вертикали */
+    align-items: center; /* Центрирование по горизонтали */
     gap: 40px;
 }
 
