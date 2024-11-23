@@ -17,11 +17,12 @@ body {
 }
 
 h1 {
-    font-size: 100px;
+    font-size: 60px; /* Уменьшен заголовок */
     text-transform: uppercase;
     color: black;
     font-weight: 400;
     text-align: center;
+    margin: 0 0 20px 0; /* Уменьшены отступы */
 }
 
 /* Основной контейнер */
@@ -34,15 +35,17 @@ h1 {
     height: 78vh; /* Высота */
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Центрирование по вертикали */
-    align-items: center; /* Центрирование по горизонтали */
-    gap: 40px;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Уменьшен зазор между элементами */
+    box-sizing: border-box; /* Включает padding в общую ширину и высоту */
 }
 
 /* Контейнер с панелью управления и предпросмотром */
 .builder-container {
     display: flex;
-    gap: 40px;
+    flex-wrap: wrap; /* Позволяет перенос элементов на следующую строку */
+    gap: 20px; /* Уменьшен зазор между блоками */
     justify-content: center;
     align-items: center;
 }
@@ -52,17 +55,19 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
-    padding: 20px;
+    gap: 15px; /* Уменьшен зазор между элементами панели */
+    padding: 15px; /* Уменьшен padding */
     background-color: rgba(255, 255, 255, 0.3); /* Прозрачный фон */
     border-radius: 8px;
+    width: 90%; /* Панель занимает меньше места */
+    max-width: 500px; /* Ограничение максимальной ширины */
 }
 
 /* Контейнер для строк */
 .control-items {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px; /* Уменьшен зазор между строками */
     width: 100%;
 }
 
@@ -76,7 +81,7 @@ h1 {
 
 /* Метки */
 .control-label {
-    font-size: 18px;
+    font-size: 16px; /* Уменьшен шрифт */
     color: black;
 }
 
@@ -84,12 +89,12 @@ h1 {
 .control-buttons {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 5px; /* Уменьшен зазор между кнопками */
 }
 
 .control-buttons button {
-    padding: 5px 10px;
-    font-size: 14px;
+    padding: 5px 8px; /* Уменьшен padding */
+    font-size: 12px; /* Уменьшен шрифт */
     cursor: pointer;
     border: 1px solid #ccc;
     background-color: white;
@@ -100,30 +105,30 @@ h1 {
 }
 
 .preset-value {
-    font-size: 16px;
+    font-size: 14px; /* Уменьшен шрифт */
     font-family: 'Patrick Hand', sans-serif;
     font-weight: 400;
     color: black;
     text-align: center;
-    width: 30px;
+    width: 25px; /* Уменьшена ширина */
 }
 
 /* Кнопки действий */
 .control-actions {
     display: flex;
     justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
+    gap: 10px; /* Уменьшен зазор между кнопками */
+    margin-top: 10px; /* Уменьшен отступ сверху */
 }
 
 .action-button {
-    padding: 12px 20px;
+    padding: 8px 16px; /* Уменьшен padding */
     background-color: #000000;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 14px; /* Уменьшен шрифт */
     font-family: 'Patrick Hand', sans-serif;
     font-weight: 400;
 }
@@ -137,17 +142,17 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 40px;
+    padding: 20px; /* Уменьшен padding */
     border-radius: 8px;
     background-color: rgba(255, 255, 255, 0.3); /* Прозрачный фон */
-    width: 500px;
-    height: 500px;
+    width: 300px; /* Уменьшена ширина */
+    height: 300px; /* Уменьшена высота */
 }
 
 .avatar-preview {
     background-color: rgba(240, 240, 240, 0.8); /* Полупрозрачный фон для аватара */
     border-radius: 16px;
     border: 2px solid #333;
-    width: 500px;
-    height: 500px;
+    width: 100%; /* Соответствие ширине контейнера */
+    height: 100%; /* Соответствие высоте контейнера */
 }
