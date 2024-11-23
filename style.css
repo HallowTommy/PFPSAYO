@@ -18,17 +18,33 @@ body {
     overflow: hidden;
 }
 
+/* Стили для объединённого блока */
+.generator-wrapper {
+    background-color: white; /* Белый фон */
+    box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.25); /* Тень */
+    border-radius: 16px; /* Закругление углов */
+    padding: 40px; /* Отступы внутри блока */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Расстояние между элементами */
+    max-width: 1200px; /* Максимальная ширина */
+    margin: 50px auto; /* Центрирование блока */
+}
+
+/* Стили заголовка */
 h1 {
     font-family: 'Patrick Hand', sans-serif;
     font-size: 30px; /* Размер текста */
-    margin-top: 100px;
-    margin-bottom: 100px;
+    margin-top: 0;
+    margin-bottom: 20px;
     text-transform: uppercase;
     color: black; /* Цвет текста */
     font-weight: 400;
     text-align: center; /* Центрирование */
 }
 
+/* Стили контейнеров */
 .builder-container {
     display: flex;
     gap: 40px;
@@ -36,7 +52,6 @@ h1 {
     width: 100%;
     justify-content: center;
     align-items: stretch;
-    margin-top: -20px;
 }
 
 .controls {
@@ -45,63 +60,12 @@ h1 {
     background-color: #ffffff;
     padding: 40px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.25);
     display: flex;
     flex-direction: column;
     gap: 20px;
     justify-content: space-between;
     align-items: center;
-}
-
-.control-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.control-item span {
-    font-family: 'Patrick Hand', sans-serif;
-    font-weight: 400;
-    color: black;
-}
-
-.control-buttons {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.control-buttons button {
-    font-family: 'Patrick Hand', sans-serif;
-    padding: 5px 10px;
-    font-size: 14px;
-    cursor: pointer;
-    border: 1px solid #ccc;
-    background-color: #ffffff;
-    color: black;
-    font-weight: 400;
-}
-
-.control-actions {
-    margin-top: 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-}
-
-.download-button {
-    font-family: 'Patrick Hand', sans-serif;
-    padding: 12px;
-    background-color: #000000;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    text-align: center;
-    font-weight: 400;
 }
 
 .avatar-preview-container {
@@ -111,7 +75,7 @@ h1 {
     background-color: #ffffff;
     padding: 40px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.25);
     width: 500px;
     height: 500px;
 }
