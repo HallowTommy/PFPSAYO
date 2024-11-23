@@ -1,0 +1,159 @@
+/* Подключение шрифта Righteous */
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+/* Основные стили */
+body {
+    font-family: 'Righteous', sans-serif;
+    font-size: 30px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    background: url('images/background/site-background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+h1 {
+    font-size: 30px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    text-transform: uppercase;
+    color: white;
+    font-weight: 400;
+}
+
+.builder-container {
+    display: flex;
+    gap: 40px;
+    max-width: 1200px;
+    width: 100%;
+    justify-content: center;
+    align-items: stretch;
+    margin-top: -20px;
+}
+
+.controls {
+    width: 540px;
+    height: 500px;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.control-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.control-item span {
+    font-weight: 400;
+    color: black;
+}
+
+.control-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.control-buttons button {
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+    color: black;
+    font-family: 'Righteous', sans-serif;
+    font-weight: 400;
+}
+
+.control-actions {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.download-button {
+    padding: 12px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    font-family: 'Righteous', sans-serif;
+    font-weight: 400;
+}
+
+.avatar-preview-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 500px;
+    height: 500px;
+}
+
+.avatar-preview {
+    background-color: #f0f0f0;
+    border-radius: 16px;
+    border: 2px solid #333;
+    width: 500px;
+    height: 500px;
+}
+
+/* Адаптивные стили */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    .builder-container {
+        flex-direction: column;
+    }
+
+    .controls, .avatar-preview-container {
+        width: 335px;
+        height: 335px;
+    }
+
+    .avatar-preview {
+        width: 335px;
+        height: 335px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 20px;
+    }
+
+    .controls, .avatar-preview-container {
+        width: 245px;
+        height: 245px;
+    }
+
+    .avatar-preview {
+        width: 245px;
+        height: 245px;
+    }
+}
