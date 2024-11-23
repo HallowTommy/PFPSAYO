@@ -7,64 +7,67 @@ body {
     font-size: 30px;
     color: white;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center; /* Центрирование контента */
     min-height: 100vh;
-    background-color: #000000;
+    background: url('images/background/site-background.jpg') no-repeat center center fixed;
+    background-size: cover;
     margin: 0;
     padding: 0;
     overflow: hidden;
 }
 
+/* Белый контейнер */
+.generator-wrapper {
+    background-color: white; /* Белый фон */
+    box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.25); /* Тень */
+    border-radius: 16px; /* Закругление углов */
+    padding: 40px; /* Внутренние отступы */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Расстояние между элементами */
+    max-width: 1200px;
+    width: 90%; /* Адаптивная ширина */
+    text-align: center; /* Центрирование текста */
+}
+
+/* Стили заголовка */
 h1 {
-    font-size: 30px;
-    margin-top: 100px;
-    margin-bottom: 100px;
+    font-family: 'Patrick Hand', sans-serif;
+    font-size: 100px; /* Увеличенный размер текста */
+    margin: 0 0 20px;
     text-transform: uppercase;
-    color: white;
+    color: black; /* Чёрный цвет текста */
     font-weight: 400;
 }
 
-/* Контейнер с панелью управления и предпросмотром */
+/* Стили контейнеров */
 .builder-container {
     display: flex;
     gap: 40px;
-    max-width: 1200px;
-    width: 100%;
     justify-content: center;
-    align-items: center; /* Центрирование по вертикали */
-    margin-top: -20px;
+    align-items: center;
 }
 
-/* Панель управления */
 .controls {
-    width: 540px;
-    height: auto; /* Динамическая высота */
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     gap: 20px;
-    align-items: center; /* Центрирование содержимого по горизонтали */
+    align-items: center;
 }
 
-/* Элементы управления */
 .control-item {
     display: flex;
-    flex-direction: column; /* Строка, выравненная по центру */
-    align-items: center; /* Центрирование по горизонтали */
-    text-align: center; /* Центрирование текста */
+    flex-direction: column;
+    align-items: center;
     gap: 10px;
-    width: 100%;
 }
 
 .control-item span {
     font-family: 'Patrick Hand', sans-serif;
     font-size: 20px;
     color: black; /* Чёрный цвет текста */
-    font-weight: 400;
 }
 
 .control-buttons {
@@ -74,54 +77,45 @@ h1 {
 }
 
 .control-buttons button {
+    font-family: 'Patrick Hand', sans-serif;
     padding: 5px 10px;
     font-size: 14px;
     cursor: pointer;
     border: 1px solid #ccc;
-    background-color: #ffffff;
+    background-color: white;
     color: black;
-    font-family: 'Patrick Hand', sans-serif;
     font-weight: 400;
     border-radius: 5px;
 }
 
-/* Кнопки действий */
 .control-actions {
-    margin-top: 30px;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    width: 100%;
-    align-items: center;
 }
 
 .download-button {
-    padding: 12px;
+    padding: 12px 20px;
     background-color: #000000;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 16px;
-    text-align: center;
     font-family: 'Patrick Hand', sans-serif;
     font-weight: 400;
+    transition: background-color 0.3s;
 }
 
 .download-button:hover {
     background-color: #333333;
 }
 
-/* Предпросмотр аватара */
+/* Стили для области аватара */
 .avatar-preview-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 500px;
-    height: 500px;
 }
 
 .avatar-preview {
@@ -135,48 +129,26 @@ h1 {
 /* Адаптивные стили */
 @media (max-width: 768px) {
     h1 {
-        font-size: 24px;
-        margin-top: 20px;
-        margin-bottom: 20px;
+        font-size: 60px;
     }
 
     .builder-container {
         flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        margin-top: -10px;
     }
 
     .controls, .avatar-preview-container {
         width: 335px;
-        padding: 20px;
     }
 
     .avatar-preview {
         width: 335px;
         height: 335px;
     }
-
-    .control-item span {
-        font-size: 18px;
-    }
-
-    .control-buttons button {
-        font-size: 12px;
-        padding: 5px 8px;
-    }
-
-    .download-button {
-        font-size: 14px;
-        padding: 8px;
-    }
 }
 
 @media (max-width: 480px) {
     h1 {
-        font-size: 20px;
-        margin-top: 20px;
-        margin-bottom: 20px;
+        font-size: 40px;
     }
 
     .controls, .avatar-preview-container {
@@ -186,19 +158,5 @@ h1 {
     .avatar-preview {
         width: 245px;
         height: 245px;
-    }
-
-    .control-item span {
-        font-size: 16px;
-    }
-
-    .control-buttons button {
-        font-size: 10px;
-        padding: 3px 6px;
-    }
-
-    .download-button {
-        font-size: 12px;
-        padding: 6px;
     }
 }
